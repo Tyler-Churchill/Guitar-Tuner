@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>TUNR - Tune Your Guitar!</title>
+        <script src="js/gauge.min.js"></script>
+        <!-- this seems too outdated to run any of my gauge/audio analysis code, but jquery mobile will error with any jquery version newer than this -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="css/layout.css"/>
+        <script type="text/javascript" src="js/layout.js"></script>
+    </head>
+    <body>
+      <div data-role="page" id="page-1">
+        <div data-role="header" class="top-header">
+          TUNR
+        </div>
+        <div data-role="content">
+          <div id="instructions">
+            <div class="card-panel white z-depth-1">
+              <div class="valign-wrapper">
+                <p><b>How to:</b> click the "Start Tuning!" button to begin tuning your guitar.
+                You can select an available tuning from the list. The tuner will tell you if each string is flat, sharp, or in tune.
+                </br></br><b>NOTE:</b> this app requires a webaudio enabled browser and must be served over SSL/TLS on chrome.</p>
+              </div>
+                <a href="#page-2" data-role="button" class="waves-effect waves-light" id="start-tuning" data-transition="slide">Start Tuning!</a>
+            </div>
+          </div> <!-- end instructions -->
+      	</div><!-- end content -->
+      </div> <!-- end page 1 -->
+      <div data-role="page" id="page-2">
+        <div data-role="header" class="top-header">
+          TUNR
+        </div>
+        <div data-role="content">
+          <form>
+            <select id="select-tuning" name="select-tuning">
+              <option value="" disabled>Choose a tuning</option>
+              <option value="standard" selected>Standard (E-A-D-G-B-E)</option>
+              <option value="dropd">Drop D (D-A-D-G-B-E)</option>
+              <option value="dropb">Drop B (B-F#-B-E-G#-C#)</option>
+            </select>
+          </form> <!-- it seems jquery mobile needs a select to wrapped by a form, I havent been able to style this at all myself-->
+          <canvas id="tuner-gauge"></canvas>
+          <div id="tuner-info">
+           <div class="row">
+             <div class="col s6">
+               <div id="note">--</div>
+               <div id="cents">-50</div>
+             </div>
+             <div class="col s6">
+               <div id="sharp">♯ ↓</div>
+               <div id="flat">♭ ↑</div>
+               <div id="done">In tune!<i class="material-icons">done</i></div>
+             </div>
+           </div>
+         </div> <!-- end tuner info-->
+         <a class="waves-effect waves-light btn-large" id="micButton"><i class="material-icons right">mic</i>Turn on Microphone</a>
+       </div> <!-- end content -->
+      </div> <!-- end page 2 -->
+      <script src="js/analyzer.js"></script>
+      <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

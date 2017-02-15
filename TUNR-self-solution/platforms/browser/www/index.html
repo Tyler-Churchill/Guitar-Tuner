@@ -1,0 +1,73 @@
+<!--
+Credits to
+Gauge.js  http://bernii.github.io/gauge.js/
+Materialize  http://materializecss.com/
+Animate.css  https://daneden.github.io/animate.css/
+Paul Lewis https://aerotwist.com/blog/guitar-tuner/
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>TUNR - Tune your guitar!</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/layout.css"/>
+    </head>
+    <body>
+      <header>
+        TUNR
+      </header>
+      <div class="container">
+        <div id="page-1">
+          <div id="instructions">
+            <div class="card-panel white z-depth-1">
+               <div class="valign-wrapper">
+                 <p><b>How to:</b> click the "start tuning!" button to activate your microphone and begin tuning.
+                 You can select a tuning from the list. The tuner will tell you if your note is flat, sharp, or in tune.
+               </br></br><b>NOTE:</b> this app requires a webaudio enabled browser and must be served over SSL/TLS on chrome.
+                </p>
+               </div>
+              <div class="waves-effect waves-light" id="start-tuning">Start Tuning!</div>
+             </div>
+           </div>
+        </div><!-- end page one -->
+        <div id="page-2">
+          <div class="input-field col s12">
+           <select>
+             <option value="" disabled>Choose a tuning</option>
+             <option value="standard" selected>Standard (E-A-D-G-B-E)</option>
+             <option value="dropd">Drop D (D-A-D-G-B-E)</option>
+             <option value="dropb">Drop B (B-F#-B-E-G#-C#)</option>
+           </select>
+          </div>
+          <canvas id="tuner-gauge"></canvas> <!-- tuning gauge -->
+          <div id="tuner-info">
+           <div class="row">
+             <div class="col s6">
+               <div id="note">--</div>
+               <div id="cents">-50</div>
+             </div>
+             <div class="col s6">
+               <div id="sharp">♯ ↓</div>
+               <div id="flat">♭ ↑</div>
+               <div id="done">In tune!<i class="material-icons">done</i></div>
+             </div>
+           </div>
+          </div> <!-- end tuner info -->
+          <div id="notes-display">
+             <ul id="notes">
+             </ul>
+          </div>
+          <a class="waves-effect waves-light btn-large" id="micButton"><i class="material-icons right">mic</i>Turn on Microphone</a>
+        </div><!-- end page two -->
+      </div> <!-- end main container -->
+      <script src="js/gauge.min.js"></script>
+      <script src="js/analyzer.js"></script>
+      <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

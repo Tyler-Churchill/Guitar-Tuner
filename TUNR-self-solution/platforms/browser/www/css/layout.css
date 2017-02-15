@@ -1,0 +1,97 @@
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  background-color: #343434 !important;
+}
+
+header {
+  height:42px;
+  width:100%;
+  text-align: center;
+  background-color: #fff;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#start-tuning {
+  border-radius: 5px;
+  background-color: #009688;
+  padding-top:20px;
+  padding-bottom:20px;
+  height:auto;
+  color:#fff;
+  width:100%;
+  text-align: center;
+  font-weight: bold;
+  margin-top:50px;
+}
+
+#start-tuning:hover {
+  background-color: #4db6ac;
+  padding-top:20px;
+  padding-bottom:20px;
+  height:auto;
+  color:#fff;
+}
+
+#instructions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:500px;
+}
+.input-field {
+  margin-bottom: 45px;
+}
+
+.input-field {
+  color:#fff;
+}
+
+.input-field .postfix.active {
+   color: #fff;
+ }
+.input-field label {
+    color: #fff;
+  }
+
+.input-field input[type=select]:focus {
+   border-bottom: 1px solid #fff;
+   box-shadow: 0 1px 0 0 #fff;
+ }
+
+ .input-field .prefix.active {
+   color: #fff;
+ }
+
+canvas {
+  padding: 0;
+  margin: auto;
+  display: block;
+  height:auto;
+  width:100%;
+}
+
+#notes-display ul {
+  list-style: none;
+}
+
+#notes-display ul li {
+  float:left;
+  padding: 5px;
+  font-weight: bold;
+  color:#fff;
+}
+#page-2 {
+  text-align: center;
+}
+
+#tuner-info {
+  font-size: 1.5em;
+  font-weight: bold;
+  color:#fff;
+  text-align: center;
+}
