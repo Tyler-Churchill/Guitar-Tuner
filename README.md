@@ -1,14 +1,3 @@
-# A Blank PhoneGap App
+# Guitar Tuning Web/Mobile App
 
-## Usage
-
-### PhoneGap CLI
-
-    $ phonegap create my-app --template blank
-
-### Desktop
-
-In your browser, open the file:
-
-    /www/index.html
-
+![Entry View](tuner.JPG)
