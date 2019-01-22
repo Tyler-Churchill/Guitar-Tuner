@@ -35,7 +35,7 @@ $(document).ready(function () {
 	page2.hide();
 	page1.fadeIn();
 	$('#done').hide();
-	$('#start-tuning').click(function() {page1.hide(); page2.show(); page2.addClass( "animated bounceInLeft" );});
+	$('#start-tuning').click(function() {page1.hide(); page2.show(); page2.addClass( "animated bounceInLeft" ); 		audioContext = new window.AudioContext();});
 
 	$('select').on('change', function() {
 		notesArray = freqTable[this.value];
@@ -80,12 +80,69 @@ $(document).ready(function () {
 	};
 
 	var init = function () {
-		$.getJSON('../json/tunings.json', function (data) {
-			freqTable = data;
-		});
+
+		// $.getJSON('../json/tunings.json', function (data, err) {
+	
+		// 	freqTable = data;
+		// });
+		freqTable = {
+			"standard": [
+				{
+				  "note":"E2",
+				  "frequency":82.41
+				},
+				{
+				  "note":"A2",
+				  "frequency":110.00
+				},
+				{
+				  "note":"D3",
+				  "frequency":146.83
+				},
+				{
+				  "note":"G3",
+				  "frequency":196.00
+				},
+				{
+				  "note":"B3",
+				  "frequency":246.94
+				},
+				{
+				  "note":"E4",
+				  "frequency":329.63
+				}
+			  ],
+			  "dropd": [
+				  {
+					"note":"D2",
+					"frequency":73.42
+				  },
+				  {
+					"note":"A2",
+					"frequency":110.00
+				  },
+				  {
+					"note":"D3",
+					"frequency":146.83
+				  },
+				  {
+					"note":"G3",
+					"frequency":196.00
+				  },
+				  {
+					"note":"B3",
+					"frequency":246.94
+				  },
+				  {
+					"note":"E4",
+					"frequency":329.63
+				  }
+				]
+			}
+			
 
 		if (isAudioContextSupported()) {
-			audioContext = new window.AudioContext();
+			//audioContext = new window.AudioContext();
 		}
 		else {
 			reportError('AudioContext is not supported in this browser');
@@ -141,7 +198,7 @@ $(document).ready(function () {
 		var n = 1024; //buffer size
 		var bestK = -1;
 		var bestR = 0;
-		for (var k = 500; k <= 1000; k++) {
+		for (var k = 8; k <= 1000; k++) {
 			var sum = 0;
 			for (var i = 0; i < n; i++) {
 				sum += ((buffer[i] - 128) / 128) * ((buffer[i + k] - 128) / 128);
@@ -156,7 +213,7 @@ $(document).ready(function () {
 				break;
 			}
 		}
-		if (bestR > 0.0050) {
+		if (bestR > 0.002) {
 				// The period (in frames) of the fundamental frequency is 'bestK'. Getting the frequency from there is trivial.
 			var fundamentalFreq = sampleRate / bestK;
 			console.log(fundamentalFreq);
@@ -209,7 +266,7 @@ $(document).ready(function () {
 			updateCents(cents);
 		}
 		else {
-			updateNote('--');
+			//updateNote('--');
 			updateCents(-50);
 		}
 	};
